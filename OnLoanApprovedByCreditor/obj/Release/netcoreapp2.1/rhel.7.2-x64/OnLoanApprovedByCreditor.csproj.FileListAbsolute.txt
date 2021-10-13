@@ -29,3 +29,6 @@ C:\Work\BankPOC\OnLoanApprovedByCreditor\OnLoanApprovedByCreditor\obj\Release\ne
 C:\Work\BankPOC\OnLoanApprovedByCreditor\OnLoanApprovedByCreditor\obj\Release\netcoreapp2.1\rhel.7.2-x64\OnLoanApprovedByCreditor.dll
 C:\Work\BankPOC\OnLoanApprovedByCreditor\OnLoanApprovedByCreditor\obj\Release\netcoreapp2.1\rhel.7.2-x64\OnLoanApprovedByCreditor.pdb
 C:\Work\BankPOC\OnLoanApprovedByCreditor\OnLoanApprovedByCreditor\obj\Release\netcoreapp2.1\rhel.7.2-x64\OnLoanApprovedByCreditor.genruntimeconfig.cache
+C:\Work\BankPOC\OnLoanApprovedByCreditor\OnLoanApprovedByCreditor\bin\Release\netcoreapp2.1\rhel.7.2-x64\Microsoft.Extensions.Configuration.dll
+C:\Work\BankPOC\OnLoanApprovedByCreditor\OnLoanApprovedByCreditor\bin\Release\netcoreapp2.1\rhel.7.2-x64\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Work\BankPOC\OnLoanApprovedByCreditor\OnLoanApprovedByCreditor\bin\Release\netcoreapp2.1\rhel.7.2-x64\Microsoft.Extensions.Primitives.dll
