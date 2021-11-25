@@ -14,16 +14,38 @@ variables:
 
 steps:
 
+- script: | 
+    dotnet restore OnLoanApprovedByCreditor.sln
+    ls
+  displayName: 'dotnet restore'
+
+
+- script: | 
+    dotnet build OnLoanApprovedByCreditor.sln
+    ls
+    cd /home/vsts/work/1/s/OnLoanApprovedByCreditor/bin/Debug/netcoreapp2.1/
+    ls -al
+    pwd
+  displayName: 'dotnet build'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '/home/vsts/work/1/s/OnLoanApprovedByCreditor/bin/Debug/netcoreapp2.1/'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
     
-- task: LambdaNETCoreDeploy@1
+- task: LambdaDeployFunction@1
   inputs:
     awsCredentials: 'awsconnection'
     regionName: 'ap-south-1'
-    command: 'deployFunction'
-    packageOnly: false
-    lambdaProjectPath: './OnLoanApprovedByCreditor'
+    deploymentMode: 'codeandconfiguration'
     functionName: 'OnLoanApprovedByCreditor'
-    functionRole: 'azure-lambda-role'
     functionHandler: 'OnLoanApprovedByCreditor::OnLoanApprovedByCreditor.Function::FunctionHandler'
-    functionMemory: 512
-    functionTimeout: 60
+    runtime: 'dotnetcore2.1'
+    codeLocation: 'localfile'
+    localZipFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    roleARN: 'cloudform-LambdaExecutionRole-1XRKE2AES4R75'
+    environment: |
+      LoanApprovalURL=https://g9yh14f7ve.execute-api.ap-south-1.amazonaws.com/Authorizeddev/loanapproval/banker
