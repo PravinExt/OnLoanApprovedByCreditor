@@ -48,3 +48,11 @@ steps:
     functionHandler: 'OnLoanApprovedByCreditor::OnLoanApprovedByCreditor.Function::FunctionHandler'
     functionMemory: 512
     functionTimeout: 3
+
+- task: AWSCLI@1
+  inputs:
+    awsCredentials: 'awsconnection'
+    regionName: 'ap-south-1'
+    awsCommand: 'lambda'
+    awsSubCommand: 'update-function-configuration'
+    awsArguments: '--function-name OnLoanApprovedByCreditor --environment "Variables={LoanApprovalURL=https://g9yh14f7ve.execute-api.ap-south-1.amazonaws.com/Authorizeddev/loanapproval/banker}"'
