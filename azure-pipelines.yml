@@ -36,16 +36,15 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
     
-- task: LambdaDeployFunction@1
+- task: LambdaNETCoreDeploy@1
   inputs:
     awsCredentials: 'awsconnection'
     regionName: 'ap-south-1'
-    deploymentMode: 'codeandconfiguration'
+    command: 'deployFunction'
+    packageOnly: false
+    lambdaProjectPath: './OnLoanApprovedByCreditor'
     functionName: 'OnLoanApprovedByCreditor'
+    functionRole: 'cloudform-LambdaExecutionRole-1XRKE2AES4R75'
     functionHandler: 'OnLoanApprovedByCreditor::OnLoanApprovedByCreditor.Function::FunctionHandler'
-    runtime: 'dotnetcore2.1'
-    codeLocation: 'localfile'
-    localZipFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    roleARN: 'cloudform-LambdaExecutionRole-1XRKE2AES4R75'
-    environment: |
-      LoanApprovalURL=https://g9yh14f7ve.execute-api.ap-south-1.amazonaws.com/Authorizeddev/loanapproval/banker
+    functionMemory: 512
+    functionTimeout: 3
