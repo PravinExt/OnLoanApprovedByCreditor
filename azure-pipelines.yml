@@ -55,4 +55,4 @@ steps:
     regionName: 'ap-south-1'
     awsCommand: 'lambda'
     awsSubCommand: 'update-function-configuration'
-    awsArguments: '--function-name OnLoanApprovedByCreditor --environment "Variables={LoanApprovalURL=https://g9yh14f7ve.execute-api.ap-south-1.amazonaws.com/Authorizeddev/loanapproval/banker}"'
+    awsArguments: '--function-name OnLoanApprovedByCreditor --environment "Variables={LoanApprovalURL=https://vdub1eldd6.execute-api.ap-south-1.amazonaws.com/v1/loanapproval/banker}"'
